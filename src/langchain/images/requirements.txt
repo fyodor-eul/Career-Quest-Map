@@ -1,0 +1,8 @@
+pygame>=2.6.0
+python-dotenv==1.0.0
+langchain-openai==0.1.0
+langchain-core==0.1.0
+langchain-community==0.0.20
+gtts==2.5.0
+azure-core==1.29.0
+openai==1.12.0
