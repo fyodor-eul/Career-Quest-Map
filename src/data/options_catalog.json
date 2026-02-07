@@ -1,0 +1,879 @@
+{
+    "version": 1,
+    "fields_vocab": [
+        "Technology",
+        "Engineering",
+        "Data",
+        "Business",
+        "Design",
+        "Healthcare",
+        "Education",
+        "Built Environment",
+        "Media",
+        "Security"
+    ],
+    "common_resources": [
+        "Try a free intro course on a reputable platform (Coursera, edX, Khan Academy, freeCodeCamp).",
+        "Use official documentation for tools you touch (language docs, framework docs).",
+        "Watch a beginner playlist, then replicate a small example on your own.",
+        "Join a student community or forum to ask questions and learn from others."
+    ],
+    "courses_poly": [
+        {
+            "name": "Computer Engineering",
+            "fields": [
+                "Technology",
+                "Engineering"
+            ],
+            "subjects_to_study": [
+                "Programming basics",
+                "Digital electronics",
+                "Microcontrollers",
+                "Networking fundamentals",
+                "Math for engineering"
+            ],
+            "employment_outlook_line": "Outlook: steady demand for practical problem-solvers. Stronger with projects and internships.",
+            "impact_lines": [
+                "Build systems that power devices and services.",
+                "Improve reliability and efficiency of real products."
+            ]
+        },
+        {
+            "name": "Information Technology",
+            "fields": [
+                "Technology",
+                "Security"
+            ],
+            "subjects_to_study": [
+                "Programming",
+                "Databases",
+                "Web development basics",
+                "Cloud fundamentals",
+                "Cyber hygiene"
+            ],
+            "employment_outlook_line": "Outlook: broad opportunities. Your portfolio matters a lot.",
+            "impact_lines": [
+                "Create apps and tools that support people and businesses.",
+                "Help teams work faster and safer."
+            ]
+        },
+        {
+            "name": "Cybersecurity and Digital Forensics",
+            "fields": [
+                "Security",
+                "Technology"
+            ],
+            "subjects_to_study": [
+                "Networking",
+                "Security fundamentals",
+                "Incident response basics",
+                "Digital forensics basics",
+                "Secure systems thinking"
+            ],
+            "employment_outlook_line": "Outlook: growing need across many industries. Consistency and practice are key.",
+            "impact_lines": [
+                "Protect users and organisations from harm.",
+                "Reduce risks and strengthen trust online."
+            ]
+        },
+        {
+            "name": "Data Science and Analytics",
+            "fields": [
+                "Data",
+                "Technology"
+            ],
+            "subjects_to_study": [
+                "Statistics basics",
+                "Python basics",
+                "Data cleaning",
+                "Data visualisation",
+                "Intro machine learning"
+            ],
+            "employment_outlook_line": "Outlook: steady, but skills must be demonstrated with real datasets.",
+            "impact_lines": [
+                "Turn messy data into clear decisions.",
+                "Help organisations plan and improve outcomes."
+            ]
+        },
+        {
+            "name": "Business Management",
+            "fields": [
+                "Business"
+            ],
+            "subjects_to_study": [
+                "Marketing fundamentals",
+                "Accounting basics",
+                "Operations",
+                "People management",
+                "Business communication"
+            ],
+            "employment_outlook_line": "Outlook: versatile across sectors. Stronger with leadership and projects.",
+            "impact_lines": [
+                "Improve how teams deliver value.",
+                "Support customers through better processes."
+            ]
+        },
+        {
+            "name": "Accountancy and Finance",
+            "fields": [
+                "Business",
+                "Data"
+            ],
+            "subjects_to_study": [
+                "Financial accounting",
+                "Managerial accounting",
+                "Business law basics",
+                "Spreadsheet skills",
+                "Financial analysis"
+            ],
+            "employment_outlook_line": "Outlook: stable roles exist. Accuracy and discipline matter.",
+            "impact_lines": [
+                "Help organisations stay financially healthy.",
+                "Support better planning and responsible decisions."
+            ]
+        },
+        {
+            "name": "Biomedical Science",
+            "fields": [
+                "Healthcare",
+                "Data"
+            ],
+            "subjects_to_study": [
+                "Biology fundamentals",
+                "Lab techniques",
+                "Human physiology basics",
+                "Data handling",
+                "Research basics"
+            ],
+            "employment_outlook_line": "Outlook: steady in labs and related industries. Practical lab skills matter.",
+            "impact_lines": [
+                "Support health outcomes through accurate lab work.",
+                "Contribute to research and safety standards."
+            ]
+        },
+        {
+            "name": "Nursing",
+            "fields": [
+                "Healthcare"
+            ],
+            "subjects_to_study": [
+                "Patient care basics",
+                "Clinical skills",
+                "Communication",
+                "Anatomy and physiology",
+                "Health ethics"
+            ],
+            "employment_outlook_line": "Outlook: steady demand. Strong empathy and resilience are important.",
+            "impact_lines": [
+                "Directly improve patient wellbeing.",
+                "Support families during critical moments."
+            ]
+        },
+        {
+            "name": "Early Childhood Development and Education",
+            "fields": [
+                "Education"
+            ],
+            "subjects_to_study": [
+                "Child development",
+                "Lesson planning basics",
+                "Classroom routines",
+                "Communication with parents",
+                "Learning through play"
+            ],
+            "employment_outlook_line": "Outlook: steady demand. Patience and consistency matter.",
+            "impact_lines": [
+                "Shape strong foundations in children.",
+                "Build confidence and curiosity early."
+            ]
+        },
+        {
+            "name": "Mass Communication",
+            "fields": [
+                "Media",
+                "Business"
+            ],
+            "subjects_to_study": [
+                "Content writing",
+                "Media production basics",
+                "Storytelling",
+                "Brand communication",
+                "Public speaking"
+            ],
+            "employment_outlook_line": "Outlook: competitive, but strong portfolios open doors.",
+            "impact_lines": [
+                "Inform and influence communities.",
+                "Help organisations communicate clearly."
+            ]
+        },
+        {
+            "name": "Digital Design and Development",
+            "fields": [
+                "Design",
+                "Technology"
+            ],
+            "subjects_to_study": [
+                "UI design basics",
+                "Prototyping",
+                "Front-end fundamentals",
+                "User research basics",
+                "Design systems"
+            ],
+            "employment_outlook_line": "Outlook: steady if you can show work. Portfolios are essential.",
+            "impact_lines": [
+                "Make products easier to use.",
+                "Improve user experience and accessibility."
+            ]
+        },
+        {
+            "name": "Game Design and Development",
+            "fields": [
+                "Design",
+                "Technology",
+                "Media"
+            ],
+            "subjects_to_study": [
+                "Game mechanics",
+                "Basic programming",
+                "Art and assets basics",
+                "Level design",
+                "Playtesting"
+            ],
+            "employment_outlook_line": "Outlook: competitive. Teamwork and strong project demos help.",
+            "impact_lines": [
+                "Create engaging learning or entertainment experiences.",
+                "Build interactive experiences that motivate people."
+            ]
+        },
+        {
+            "name": "Architecture",
+            "fields": [
+                "Built Environment",
+                "Design"
+            ],
+            "subjects_to_study": [
+                "Design fundamentals",
+                "Building concepts",
+                "Model-making",
+                "Drafting basics",
+                "Presentation skills"
+            ],
+            "employment_outlook_line": "Outlook: steady with strong fundamentals. Portfolios matter.",
+            "impact_lines": [
+                "Shape spaces where people live and work.",
+                "Improve comfort, function, and safety in buildings."
+            ]
+        },
+        {
+            "name": "Civil Engineering",
+            "fields": [
+                "Built Environment",
+                "Engineering"
+            ],
+            "subjects_to_study": [
+                "Engineering math",
+                "Structures basics",
+                "Materials",
+                "Site safety basics",
+                "Project planning"
+            ],
+            "employment_outlook_line": "Outlook: steady infrastructure demand. Field readiness matters.",
+            "impact_lines": [
+                "Build infrastructure that supports daily life.",
+                "Improve safety and reliability of public spaces."
+            ]
+        },
+        {
+            "name": "Hospitality and Tourism Management",
+            "fields": [
+                "Business"
+            ],
+            "subjects_to_study": [
+                "Customer service",
+                "Operations",
+                "Event planning basics",
+                "Service design",
+                "Communication"
+            ],
+            "employment_outlook_line": "Outlook: depends on sector cycles. Strong people skills help.",
+            "impact_lines": [
+                "Create good experiences for guests.",
+                "Support teams that run smooth services."
+            ]
+        }
+    ],
+    "uni_courses": [
+        {
+            "name": "Computer Science",
+            "fields": [
+                "Technology",
+                "Data"
+            ],
+            "subjects_to_study": [
+                "Algorithms",
+                "Programming",
+                "Databases",
+                "Software engineering",
+                "Math foundations"
+            ],
+            "employment_outlook_line": "Outlook: strong across many industries. Depth and fundamentals matter.",
+            "impact_lines": [
+                "Build scalable systems and products.",
+                "Solve complex problems with code."
+            ]
+        },
+        {
+            "name": "Information Systems",
+            "fields": [
+                "Technology",
+                "Business"
+            ],
+            "subjects_to_study": [
+                "Systems analysis",
+                "Databases",
+                "Product thinking",
+                "Enterprise systems",
+                "Project management"
+            ],
+            "employment_outlook_line": "Outlook: steady. Strong communication and real projects help.",
+            "impact_lines": [
+                "Bridge business needs and technical solutions.",
+                "Improve workflows and user outcomes."
+            ]
+        },
+        {
+            "name": "Business Analytics",
+            "fields": [
+                "Data",
+                "Business"
+            ],
+            "subjects_to_study": [
+                "Statistics",
+                "Data modelling",
+                "Visual analytics",
+                "Decision making",
+                "Business fundamentals"
+            ],
+            "employment_outlook_line": "Outlook: steady. Strong with internships and portfolio work.",
+            "impact_lines": [
+                "Help teams make better decisions.",
+                "Turn data into useful direction."
+            ]
+        },
+        {
+            "name": "Electrical Engineering",
+            "fields": [
+                "Engineering",
+                "Technology"
+            ],
+            "subjects_to_study": [
+                "Circuits",
+                "Signals basics",
+                "Control systems",
+                "Electromagnetics basics",
+                "Engineering math"
+            ],
+            "employment_outlook_line": "Outlook: steady across many sectors. Fundamentals matter.",
+            "impact_lines": [
+                "Power modern devices and infrastructure.",
+                "Improve efficiency and safety in systems."
+            ]
+        },
+        {
+            "name": "Mechanical Engineering",
+            "fields": [
+                "Engineering"
+            ],
+            "subjects_to_study": [
+                "Mechanics",
+                "Thermodynamics basics",
+                "Design and CAD",
+                "Materials",
+                "Manufacturing basics"
+            ],
+            "employment_outlook_line": "Outlook: steady in many industries. Practical design skills help.",
+            "impact_lines": [
+                "Build machines that improve productivity.",
+                "Design safer and more efficient products."
+            ]
+        },
+        {
+            "name": "Industrial Design",
+            "fields": [
+                "Design"
+            ],
+            "subjects_to_study": [
+                "Design thinking",
+                "Prototyping",
+                "User research",
+                "Materials basics",
+                "Portfolio development"
+            ],
+            "employment_outlook_line": "Outlook: competitive. Portfolios and process matter most.",
+            "impact_lines": [
+                "Make products more usable and enjoyable.",
+                "Improve accessibility and comfort in design."
+            ]
+        },
+        {
+            "name": "Architecture",
+            "fields": [
+                "Built Environment",
+                "Design"
+            ],
+            "subjects_to_study": [
+                "Studio design",
+                "Building technology",
+                "History of architecture basics",
+                "Digital modelling",
+                "Presentation skills"
+            ],
+            "employment_outlook_line": "Outlook: steady. Strong portfolios help progression.",
+            "impact_lines": [
+                "Design better spaces for communities.",
+                "Improve safety, comfort, and function."
+            ]
+        },
+        {
+            "name": "Accountancy",
+            "fields": [
+                "Business",
+                "Data"
+            ],
+            "subjects_to_study": [
+                "Financial reporting",
+                "Audit basics",
+                "Tax fundamentals",
+                "Business law basics",
+                "Analytics basics"
+            ],
+            "employment_outlook_line": "Outlook: stable. Detail and discipline are key.",
+            "impact_lines": [
+                "Support responsible finance and trust.",
+                "Help organisations plan and comply."
+            ]
+        },
+        {
+            "name": "Psychology",
+            "fields": [
+                "Healthcare",
+                "Education"
+            ],
+            "subjects_to_study": [
+                "Research methods",
+                "Statistics basics",
+                "Cognitive psychology",
+                "Social psychology",
+                "Ethics"
+            ],
+            "employment_outlook_line": "Outlook: broad pathways. Further specialisation may be needed.",
+            "impact_lines": [
+                "Help people understand behaviour and wellbeing.",
+                "Improve support systems in schools and workplaces."
+            ]
+        },
+        {
+            "name": "Nursing",
+            "fields": [
+                "Healthcare"
+            ],
+            "subjects_to_study": [
+                "Clinical practice",
+                "Health assessment",
+                "Pharmacology basics",
+                "Communication",
+                "Ethics"
+            ],
+            "employment_outlook_line": "Outlook: steady demand. Strong resilience helps.",
+            "impact_lines": [
+                "Directly support patients and families.",
+                "Improve public health outcomes."
+            ]
+        },
+        {
+            "name": "Communications and New Media",
+            "fields": [
+                "Media",
+                "Business"
+            ],
+            "subjects_to_study": [
+                "Media writing",
+                "Digital storytelling",
+                "Content strategy",
+                "Analytics basics",
+                "Public communication"
+            ],
+            "employment_outlook_line": "Outlook: competitive. Portfolios are essential.",
+            "impact_lines": [
+                "Inform communities with clear content.",
+                "Help organisations communicate responsibly."
+            ]
+        },
+        {
+            "name": "Education",
+            "fields": [
+                "Education"
+            ],
+            "subjects_to_study": [
+                "Pedagogy basics",
+                "Learning design",
+                "Classroom practice",
+                "Assessment basics",
+                "Student wellbeing"
+            ],
+            "employment_outlook_line": "Outlook: steady. Strong patience and clarity matter.",
+            "impact_lines": [
+                "Help students grow skills and confidence.",
+                "Build long-term impact through learning."
+            ]
+        },
+        {
+            "name": "Biomedical Engineering",
+            "fields": [
+                "Engineering",
+                "Healthcare",
+                "Technology"
+            ],
+            "subjects_to_study": [
+                "Engineering math",
+                "Human physiology basics",
+                "Sensors basics",
+                "Design projects",
+                "Ethics"
+            ],
+            "employment_outlook_line": "Outlook: niche but meaningful. Projects help a lot.",
+            "impact_lines": [
+                "Create technology that supports healthcare.",
+                "Improve quality of life through devices."
+            ]
+        },
+        {
+            "name": "Cybersecurity",
+            "fields": [
+                "Security",
+                "Technology"
+            ],
+            "subjects_to_study": [
+                "Network security",
+                "Secure coding basics",
+                "Risk management",
+                "Security operations basics",
+                "Ethics"
+            ],
+            "employment_outlook_line": "Outlook: growing. Practice and discipline matter.",
+            "impact_lines": [
+                "Protect systems and users from harm.",
+                "Strengthen trust in digital services."
+            ]
+        },
+        {
+            "name": "Business Administration",
+            "fields": [
+                "Business"
+            ],
+            "subjects_to_study": [
+                "Strategy basics",
+                "Marketing",
+                "Operations",
+                "Finance basics",
+                "Leadership"
+            ],
+            "employment_outlook_line": "Outlook: versatile. Strong internships help.",
+            "impact_lines": [
+                "Improve how organisations run.",
+                "Support teams delivering value."
+            ]
+        }
+    ],
+    "careers_poly_work": [
+        {
+            "name": "Mobile Application Developer",
+            "fields": [
+                "Technology",
+                "Design"
+            ],
+            "subjects_or_skills": [
+                "Programming basics",
+                "UI basics",
+                "APIs",
+                "Testing basics",
+                "Version control"
+            ],
+            "work_style_line": "Work style: build features, test often, collaborate with designers and teammates.",
+            "salary_outlook_line": "Pay range: around low-to-mid $2k+ for fresh grads, varies by company and skills.",
+            "employment_outlook_line": "Outlook: steady. Stronger with a simple app portfolio and internships.",
+            "impact_lines": [
+                "Build apps that help users solve daily problems.",
+                "Improve access to services through mobile tools."
+            ]
+        },
+        {
+            "name": "Junior Data Analyst",
+            "fields": [
+                "Data",
+                "Business"
+            ],
+            "subjects_or_skills": [
+                "Spreadsheets",
+                "SQL basics",
+                "Charts and dashboards",
+                "Basic statistics",
+                "Clear reporting"
+            ],
+            "work_style_line": "Work style: handle data carefully, communicate insights, work with stakeholders.",
+            "salary_outlook_line": "Pay range: around low-to-mid $2k+ for fresh grads, varies by scope and sector.",
+            "employment_outlook_line": "Outlook: steady. Stronger if you can show real dashboards and clean datasets.",
+            "impact_lines": [
+                "Help teams make better decisions with evidence.",
+                "Spot issues early and improve outcomes."
+            ]
+        },
+        {
+            "name": "IT Support Associate",
+            "fields": [
+                "Technology"
+            ],
+            "subjects_or_skills": [
+                "Troubleshooting",
+                "Operating systems basics",
+                "Networking basics",
+                "Customer communication",
+                "Ticketing workflow"
+            ],
+            "work_style_line": "Work style: fast response, clear communication, structured problem-solving.",
+            "salary_outlook_line": "Pay range: around low-to-mid $2k for fresh grads, varies by shifts and company.",
+            "employment_outlook_line": "Outlook: steady. Stronger with certifications and good service attitude.",
+            "impact_lines": [
+                "Keep systems running so people can work.",
+                "Reduce downtime and improve productivity."
+            ]
+        },
+        {
+            "name": "Cybersecurity Operations Trainee",
+            "fields": [
+                "Security",
+                "Technology"
+            ],
+            "subjects_or_skills": [
+                "Security basics",
+                "Log reading basics",
+                "Incident reporting",
+                "Network basics",
+                "Careful documentation"
+            ],
+            "work_style_line": "Work style: routine monitoring, alert handling, teamwork with clear handovers.",
+            "salary_outlook_line": "Pay range: around low-to-mid $2k+ for fresh grads, depends on shift work and skills.",
+            "employment_outlook_line": "Outlook: growing. Stronger with practice labs and discipline.",
+            "impact_lines": [
+                "Protect users and organisations from cyber harm.",
+                "Support safe and trusted services."
+            ]
+        },
+        {
+            "name": "Accounting Assistant",
+            "fields": [
+                "Business",
+                "Data"
+            ],
+            "subjects_or_skills": [
+                "Bookkeeping basics",
+                "Excel basics",
+                "Attention to detail",
+                "Invoice handling",
+                "Basic reporting"
+            ],
+            "work_style_line": "Work style: structured tasks, accuracy first, clear documentation.",
+            "salary_outlook_line": "Pay range: around low-to-mid $2k for fresh grads, varies by company size.",
+            "employment_outlook_line": "Outlook: stable. Stronger with accuracy and reliability.",
+            "impact_lines": [
+                "Support clean finances for organisations.",
+                "Help teams plan with confidence."
+            ]
+        },
+        {
+            "name": "Marketing Executive (Junior)",
+            "fields": [
+                "Business",
+                "Media"
+            ],
+            "subjects_or_skills": [
+                "Content basics",
+                "Social media basics",
+                "Simple analytics",
+                "Communication",
+                "Campaign planning"
+            ],
+            "work_style_line": "Work style: creative planning, quick iterations, coordination with others.",
+            "salary_outlook_line": "Pay range: around low-to-mid $2k for fresh grads, varies by role scope and sector.",
+            "employment_outlook_line": "Outlook: competitive. Portfolios and results help a lot.",
+            "impact_lines": [
+                "Help people discover useful products and services.",
+                "Improve communication between brands and customers."
+            ]
+        },
+        {
+            "name": "UI/UX Design Assistant",
+            "fields": [
+                "Design",
+                "Technology"
+            ],
+            "subjects_or_skills": [
+                "Wireframing",
+                "Basic prototyping",
+                "User testing basics",
+                "Design tools basics",
+                "Clear documentation"
+            ],
+            "work_style_line": "Work style: feedback loops, teamwork with developers, user-first thinking.",
+            "salary_outlook_line": "Pay range: around low-to-mid $2k+ for fresh grads, varies by portfolio strength.",
+            "employment_outlook_line": "Outlook: steady if you can show strong work. Portfolios matter most.",
+            "impact_lines": [
+                "Make apps easier and safer to use.",
+                "Reduce frustration and improve accessibility."
+            ]
+        },
+        {
+            "name": "Electronics Technician",
+            "fields": [
+                "Engineering",
+                "Technology"
+            ],
+            "subjects_or_skills": [
+                "Basic circuits",
+                "Testing tools basics",
+                "Soldering basics",
+                "Safety practices",
+                "Documentation"
+            ],
+            "work_style_line": "Work style: hands-on troubleshooting, careful checks, safety-first routines.",
+            "salary_outlook_line": "Pay range: around low-to-mid $2k for fresh grads, varies by industry and shifts.",
+            "employment_outlook_line": "Outlook: steady in many industries. Reliability matters.",
+            "impact_lines": [
+                "Keep devices working safely.",
+                "Support quality and reduce failures."
+            ]
+        },
+        {
+            "name": "Healthcare Assistant",
+            "fields": [
+                "Healthcare"
+            ],
+            "subjects_or_skills": [
+                "Patient support basics",
+                "Communication",
+                "Hygiene routines",
+                "Team coordination",
+                "Basic documentation"
+            ],
+            "work_style_line": "Work style: people-focused, teamwork, calm under pressure.",
+            "salary_outlook_line": "Pay range: around low-to-mid $2k for fresh grads, varies by setting and shifts.",
+            "employment_outlook_line": "Outlook: steady. Service attitude matters.",
+            "impact_lines": [
+                "Support patient comfort and care.",
+                "Help healthcare teams run smoothly."
+            ]
+        },
+        {
+            "name": "Early Childhood Educator (Assistant)",
+            "fields": [
+                "Education"
+            ],
+            "subjects_or_skills": [
+                "Classroom routines",
+                "Communication",
+                "Activity planning",
+                "Patience",
+                "Observation"
+            ],
+            "work_style_line": "Work style: consistent routines, positive guidance, teamwork with teachers.",
+            "salary_outlook_line": "Pay range: around low-to-mid $2k for fresh grads, varies by centre and role.",
+            "employment_outlook_line": "Outlook: steady. Consistency and care matter.",
+            "impact_lines": [
+                "Help children build confidence early.",
+                "Support learning through safe routines."
+            ]
+        },
+        {
+            "name": "Content Creator (Junior)",
+            "fields": [
+                "Media",
+                "Business"
+            ],
+            "subjects_or_skills": [
+                "Writing basics",
+                "Basic editing",
+                "Storytelling",
+                "Consistency",
+                "Audience understanding"
+            ],
+            "work_style_line": "Work style: plan, create, review metrics, repeat. Needs discipline.",
+            "salary_outlook_line": "Pay range: varies widely. Often grows with portfolio and consistent results.",
+            "employment_outlook_line": "Outlook: competitive. Portfolios and proven consistency matter.",
+            "impact_lines": [
+                "Educate or inspire audiences with clear content.",
+                "Help organisations communicate better."
+            ]
+        },
+        {
+            "name": "Project Coordinator (Junior)",
+            "fields": [
+                "Business"
+            ],
+            "subjects_or_skills": [
+                "Planning basics",
+                "Communication",
+                "Task tracking",
+                "Meeting notes",
+                "Follow-ups"
+            ],
+            "work_style_line": "Work style: structured tracking, coordination, clear updates to teams.",
+            "salary_outlook_line": "Pay range: around low-to-mid $2k+ for fresh grads, depends on industry.",
+            "employment_outlook_line": "Outlook: steady across industries. Reliability matters.",
+            "impact_lines": [
+                "Keep teams aligned and reduce delays.",
+                "Improve delivery quality through coordination."
+            ]
+        },
+        {
+            "name": "Lab Technician (Science)",
+            "fields": [
+                "Healthcare",
+                "Data"
+            ],
+            "subjects_or_skills": [
+                "Lab safety",
+                "Basic lab techniques",
+                "Careful measurement",
+                "Documentation",
+                "Quality checks"
+            ],
+            "work_style_line": "Work style: detail-focused, routine procedures, accuracy-first habits.",
+            "salary_outlook_line": "Pay range: around low-to-mid $2k for fresh grads, varies by lab and shifts.",
+            "employment_outlook_line": "Outlook: steady. Accuracy and discipline matter.",
+            "impact_lines": [
+                "Support reliable test results.",
+                "Help protect public health and safety."
+            ]
+        },
+        {
+            "name": "Customer Service Associate",
+            "fields": [
+                "Business"
+            ],
+            "subjects_or_skills": [
+                "Communication",
+                "Problem handling",
+                "Empathy",
+                "System usage basics",
+                "Clear documentation"
+            ],
+            "work_style_line": "Work style: people-focused, steady under pressure, clear communication.",
+            "salary_outlook_line": "Pay range: around low-to-mid $2k for fresh grads, varies by shifts and industry.",
+            "employment_outlook_line": "Outlook: steady across sectors. Strong service skills help.",
+            "impact_lines": [
+                "Help customers solve issues quickly.",
+                "Improve trust and satisfaction."
+            ]
+        }
+    ]
+}

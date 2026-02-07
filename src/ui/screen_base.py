@@ -1,0 +1,9 @@
+from __future__ import annotations
+import pygame
+from typing import Protocol
+
+
+class Screen(Protocol):
+    def handle_event(self, event: pygame.event.Event) -> None: ...
+    def update(self, dt: float) -> None: ...
+    def draw(self, surface: pygame.Surface) -> None: ...
