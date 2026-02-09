@@ -115,10 +115,11 @@ class GateSceneScreen:
                 return
 
             if self.phase == "ask":
-                if event.key in (pygame.K_y, pygame.K_1):
+                ch = event.unicode
+                if event.key in (pygame.K_y, pygame.K_1) or ch in ("y", "Y", "1"):
                     self._choose_yes()
                     return
-                if event.key in (pygame.K_n, pygame.K_2):
+                if event.key in (pygame.K_n, pygame.K_2) or ch in ("n", "N", "2"):
                     self._choose_no()
                     return
 
@@ -355,4 +356,9 @@ class GateSceneScreen:
     def _return_to_map(self) -> None:
         if hasattr(self.back_screen, "gates_zone_active"):
             self.back_screen.gates_zone_active = True
+        if hasattr(self.back_screen, "on_gate_exit"):
+            try:
+                self.back_screen.on_gate_exit()
+            except Exception:
+                pass
         self.sm.set(self.back_screen)

@@ -97,6 +97,7 @@ class TrainingMapScreen:
         self.gates: list[RectObject] = []
         self.gate_names: list[str] = []
         self.gates_zone_active = False
+        self.gate_cooldown_until = 0.0
 
     # ---------------- core loop ----------------
 
@@ -144,7 +145,7 @@ class TrainingMapScreen:
             self._spawn_gates_from_analysis()
 
         # If gates exist, touching gate opens gate scene
-        if self.gates_zone_active:
+        if self.gates_zone_active and time.time() >= self.gate_cooldown_until:
             for gate in self.gates:
                 if self.player_rect.colliderect(gate.rect):
                     self._enter_gate(gate.label)
@@ -223,23 +224,20 @@ class TrainingMapScreen:
         self.sm.set(WiseManQuestionsScreen(
             self.sm, self.state, self.w, self.h, back_screen=self))
 
-    def on_part2_completed(self, inferred_fields: list[str], part2_answers: list[dict[str, Any]], poly_path_choice: Optional[str] = None) -> None:
+    def on_part2_completed(self, inferred_fields: list[str], part2_answers: list[dict[str, Any]], poly_path_choice: Optional[str] = None):
         setattr(self.state, "inferred_fields", inferred_fields)
         setattr(self.state, "part2_answers", part2_answers)
 
         if poly_path_choice:
             self.state.profile.poly_path_choice = poly_path_choice  # type: ignore
 
+        # Show analysis screen before gates
+        from ui.screens.wise_man_screen import WiseManScreen
+        return WiseManScreen(self.sm, self.state,
+                             self.w, self.h, self.engine, back_screen=self)
+
+    def on_analysis_completed(self) -> None:
         self.part2_done = True
-
-        # Generate analysis now so we can spawn gates
-        edu = getattr(self.state.profile,
-                      "education_status", "Secondary School")
-        poly_choice = getattr(self.state.profile, "poly_path_choice", None)
-        analysis = self.engine.gen_analysis(
-            edu, poly_choice, inferred_fields, part2_answers)
-        setattr(self.state, "analysis_payload", analysis)
-
         self._toast("Head to the gates.", seconds=2.5)
 
     # ---------------- gates ----------------
@@ -287,6 +285,11 @@ class TrainingMapScreen:
         from ui.screens.gate_scene_screen import GateSceneScreen
         self.sm.set(GateSceneScreen(self.sm, self.state, self.w,
                     self.h, back_screen=self, option_name=option_name))
+
+    def on_gate_exit(self) -> None:
+        # Move player away from gates and add a short cooldown to avoid instant re-entry
+        self.player_rect.center = (self.w // 2, self.h // 2)
+        self.gate_cooldown_until = time.time() + 0.6
 
     # ---------------- helpers ----------------
 

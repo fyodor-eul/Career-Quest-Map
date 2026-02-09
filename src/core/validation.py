@@ -6,6 +6,33 @@ def _is_str_list(x: Any) -> bool:
     return isinstance(x, list) and all(isinstance(i, str) for i in x)
 
 
+def _validate_question(q: Any) -> None:
+    if not isinstance(q, dict):
+        raise ValueError("question: must be dict")
+    if q.get("type") not in ("mcq", "slider", "rating", "text"):
+        raise ValueError("question: invalid type")
+    if not isinstance(q.get("id"), str) or not isinstance(q.get("prompt"), str):
+        raise ValueError("question: id and prompt required")
+    t = q["type"]
+    if t == "mcq":
+        if not _is_str_list(q.get("options")) or len(q["options"]) < 2:
+            raise ValueError("question: mcq needs options")
+    if t == "slider":
+        s = q.get("scale")
+        if not isinstance(s, dict):
+            raise ValueError("question: slider needs scale dict")
+        for k in ("min", "max", "min_label", "max_label"):
+            if k not in s:
+                raise ValueError("question: slider scale missing field")
+    if t == "rating":
+        s = q.get("scale")
+        if s != {"min": 1, "max": 5}:
+            raise ValueError("question: rating scale must be 1-5")
+    if t == "text":
+        if not isinstance(q.get("placeholder"), str):
+            raise ValueError("question: text needs placeholder")
+
+
 def validate_part1(payload: dict[str, Any]) -> None:
     if not isinstance(payload, dict):
         raise ValueError("part1: payload must be dict")
@@ -13,30 +40,7 @@ def validate_part1(payload: dict[str, Any]) -> None:
     if not isinstance(qs, list) or len(qs) != 5:
         raise ValueError("part1: questions must be list of 5")
     for q in qs:
-        if not isinstance(q, dict):
-            raise ValueError("part1: each question must be dict")
-        if q.get("type") not in ("mcq", "slider", "rating", "text"):
-            raise ValueError("part1: invalid type")
-        if not isinstance(q.get("id"), str) or not isinstance(q.get("prompt"), str):
-            raise ValueError("part1: id and prompt required")
-        t = q["type"]
-        if t == "mcq":
-            if not _is_str_list(q.get("options")) or len(q["options"]) < 2:
-                raise ValueError("part1: mcq needs options")
-        if t == "slider":
-            s = q.get("scale")
-            if not isinstance(s, dict):
-                raise ValueError("part1: slider needs scale dict")
-            for k in ("min", "max", "min_label", "max_label"):
-                if k not in s:
-                    raise ValueError("part1: slider scale missing field")
-        if t == "rating":
-            s = q.get("scale")
-            if s != {"min": 1, "max": 5}:
-                raise ValueError("part1: rating scale must be 1-5")
-        if t == "text":
-            if not isinstance(q.get("placeholder"), str):
-                raise ValueError("part1: text needs placeholder")
+        _validate_question(q)
 
 
 def validate_part2(payload: dict[str, Any], is_poly: bool) -> None:
@@ -48,11 +52,18 @@ def validate_part2(payload: dict[str, Any], is_poly: bool) -> None:
     qs = payload.get("questions")
     if not isinstance(qs, list) or len(qs) != 12:
         raise ValueError("part2: questions must be list of 12")
+    for q in qs:
+        _validate_question(q)
     if is_poly:
         peq = payload.get("poly_extra_question")
         if not isinstance(peq, dict):
             raise ValueError(
                 "part2: poly_extra_question must be dict for Poly")
+        _validate_question(peq)
+        opts = peq.get("options")
+        if opts != ["Work", "Go to uni"]:
+            raise ValueError(
+                "part2: poly_extra_question options must be ['Work','Go to uni']")
     else:
         if payload.get("poly_extra_question") is not None:
             raise ValueError(

@@ -4,6 +4,7 @@ from typing import Any
 import pygame
 
 from ui.widgets import Button
+from ui.screens.question_modal import QuestionModal
 from ui.screen_manager import ScreenManager
 from app.state import AppState
 
@@ -39,17 +40,24 @@ class WiseManQuestionsScreen:
             "poly_extra_question", None) if isinstance(payload, dict) else None
 
         self.idx = 0
-        self.input_text = ""
 
         self.asking_poly_extra = False
         self.poly_path_choice: str | None = None
 
         self.answers: list[dict[str, Any]] = []
 
+        self.modal = QuestionModal(self.w, self.h)
+
         self.btn_next = Button(pygame.Rect(
             self.w - 200, self.h - 90, 160, 50), "Next", pygame.font.Font(None, 32))
         self.btn_back = Button(pygame.Rect(
             40, self.h - 90, 160, 50), "Back", pygame.font.Font(None, 32))
+
+        if self.questions:
+            self._open_current()
+        elif self.poly_extra:
+            self.asking_poly_extra = True
+            self._open_current()
 
     def handle_event(self, event: pygame.event.Event) -> None:
         if event.type == pygame.MOUSEMOTION:
@@ -64,17 +72,12 @@ class WiseManQuestionsScreen:
                 self._commit_and_next()
                 return
 
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_RETURN:
-                self._commit_and_next()
-                return
-            if event.key == pygame.K_BACKSPACE:
-                self.input_text = self.input_text[:-1]
-                return
+        self.modal.handle_event(event)
 
-            if event.unicode and len(event.unicode) == 1 and len(self.input_text) < 80:
-                if ord(event.unicode) >= 32:
-                    self.input_text += event.unicode
+        if event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
+            if self.modal.active and self.modal.done:
+                self._commit_and_next()
+            return
 
     def update(self, dt: float) -> None:
         pass
@@ -121,65 +124,54 @@ class WiseManQuestionsScreen:
             surface.blit(self.font.render(line, True, (40, 40, 55)), (60, y))
             y += 30
 
-        if qtype == "mcq":
-            opts = q.get("options", [])
-            if isinstance(opts, list):
-                y += 10
-                for i, opt in enumerate(opts[:6]):
-                    surface.blit(self.font_small.render(
-                        f"{i+1}) {opt}", True, (50, 50, 70)), (80, y))
-                    y += 24
-
-        y += 20
-        box = pygame.Rect(60, y, self.w - 120, 44)
-        pygame.draw.rect(surface, (255, 255, 255), box, border_radius=10)
-        pygame.draw.rect(surface, (180, 180, 200), box, 2, border_radius=10)
-
-        ans = self.input_text if self.input_text else "Type your answer here, press Enter"
-        color = (40, 40, 55) if self.input_text else (140, 140, 160)
-        surface.blit(self.font.render(ans, True, color),
-                     (box.x + 12, box.y + 10))
-
         self.btn_back.draw(surface)
         self.btn_next.draw(surface)
+
+        self.modal.draw(surface)
 
     def _commit_and_next(self) -> None:
         # Normal part2 questions
         if not self.asking_poly_extra:
             q = self.questions[self.idx]
+            if not self.modal.done:
+                return
             self.answers.append({
                 "id": q.get("id", f"q{self.idx+1}"),
                 "type": q.get("type", "text"),
                 "prompt": q.get("prompt", ""),
-                "answer": self.input_text.strip(),
+                "answer": self.modal.answer,
             })
-            self.input_text = ""
+            self.modal.active = False
 
             if self.idx < len(self.questions) - 1:
                 self.idx += 1
+                self._open_current()
                 return
 
             # Done 12 questions, go to poly extra if present
             if self.poly_extra:
                 self.asking_poly_extra = True
+                self._open_current()
                 return
 
             self._finish()
             return
 
         # Poly extra question
+        if not self.modal.done:
+            return
         q = self.poly_extra or {}
-        raw = self.input_text.strip()
+        raw = self.modal.answer
         self.answers.append({
             "id": q.get("id", "poly_path"),
             "type": q.get("type", "mcq"),
             "prompt": q.get("prompt", ""),
             "answer": raw,
         })
-        self.input_text = ""
+        self.modal.active = False
 
         # Best-effort parse
-        val = raw.lower()
+        val = str(raw).lower()
         if "work" in val:
             self.poly_path_choice = "Work"
         elif "uni" in val:
@@ -187,16 +179,26 @@ class WiseManQuestionsScreen:
 
         self._finish()
 
+    def _open_current(self) -> None:
+        if self.asking_poly_extra:
+            q = self.poly_extra
+        else:
+            q = self.questions[self.idx] if self.questions else None
+
+        if isinstance(q, dict) and q.get("type") in ("mcq", "slider", "rating", "text"):
+            self.modal.open(q)
+
     def _finish(self) -> None:
+        next_screen = None
         try:
-            self.back_screen.on_part2_completed(
+            next_screen = self.back_screen.on_part2_completed(
                 inferred_fields=self.inferred_fields,
                 part2_answers=self.answers,
                 poly_path_choice=self.poly_path_choice,
             )
         except Exception:
-            pass
-        self.sm.set(self.back_screen)
+            next_screen = None
+        self.sm.set(next_screen or self.back_screen)
 
     def _wrap(self, text: str, max_chars: int) -> list[str]:
         words = text.split()
