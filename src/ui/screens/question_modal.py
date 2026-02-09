@@ -23,7 +23,24 @@ class QuestionModal:
     def open(self, q: dict[str, Any]) -> None:
         self.active = True
         self.done = False
-        self.q = q
+        # Normalize malformed questions so UI stays usable
+        qq = dict(q)
+        if qq.get("type") == "mcq":
+            opts = qq.get("options")
+            if not isinstance(opts, list) or len(opts) == 0:
+                qq["type"] = "text"
+                qq.setdefault("placeholder", "Type your answer")
+        if qq.get("type") == "slider":
+            scale = qq.get("scale")
+            if not isinstance(scale, dict):
+                qq["type"] = "text"
+                qq.setdefault("placeholder", "Type your answer")
+        if qq.get("type") == "rating":
+            scale = qq.get("scale")
+            if scale != {"min": 1, "max": 5}:
+                qq["type"] = "text"
+                qq.setdefault("placeholder", "Type your answer")
+        self.q = qq
         self.answer = None
         self.slider_value = 5
         self.rating_value = 3

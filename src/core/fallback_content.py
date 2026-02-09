@@ -5,28 +5,28 @@ from typing import Any
 def fallback_part1(education_status: str) -> dict[str, Any]:
     if education_status == "Poly":
         qs = [
-            {"id": "p1_q1", "type": "rating",
+            {"id": "q1", "type": "rating",
                 "prompt": "How manageable is your current course workload?", "scale": {"min": 1, "max": 5}},
-            {"id": "p1_q2", "type": "mcq", "prompt": "Which part frustrates you most right now?", "options": [
+            {"id": "q2", "type": "mcq", "prompt": "Which part frustrates you most right now?", "options": [
                 "Concepts feel abstract", "Too much memorising", "Too fast pace", "Group work issues", "Not interested in modules"]},
-            {"id": "p1_q3", "type": "slider", "prompt": "How much do you enjoy hands-on work versus theory?",
+            {"id": "q3", "type": "slider", "prompt": "How much do you enjoy hands-on work versus theory?",
                 "scale": {"min": 0, "max": 10, "min_label": "More theory", "max_label": "More hands-on"}},
-            {"id": "p1_q4", "type": "text", "prompt": "Name 1 activity you enjoy even outside school.",
+            {"id": "q4", "type": "text", "prompt": "Name 1 activity you enjoy even outside school.",
                 "placeholder": "Example: editing videos, coding, sports"},
-            {"id": "p1_q5", "type": "mcq", "prompt": "When learning something new, you prefer:", "options": [
+            {"id": "q5", "type": "mcq", "prompt": "When learning something new, you prefer:", "options": [
                 "Step-by-step notes", "Try first, learn by doing", "Watch examples", "Discuss with people"]},
         ]
     else:
         qs = [
-            {"id": "p1_q1", "type": "mcq", "prompt": "Which school tasks do you enjoy most?", "options": [
+            {"id": "q1", "type": "mcq", "prompt": "Which school tasks do you enjoy most?", "options": [
                 "Math/Logic", "Writing/Language", "Design/Art", "Science/Lab", "Helping people"]},
-            {"id": "p1_q2", "type": "slider", "prompt": "How much do you like working with people?", "scale": {
+            {"id": "q2", "type": "slider", "prompt": "How much do you like working with people?", "scale": {
                 "min": 0, "max": 10, "min_label": "Prefer solo", "max_label": "Prefer people"}},
-            {"id": "p1_q3", "type": "rating",
+            {"id": "q3", "type": "rating",
                 "prompt": "How confident are you in solving problems under time pressure?", "scale": {"min": 1, "max": 5}},
-            {"id": "p1_q4", "type": "text", "prompt": "If you could learn any skill in 3 months, what would it be?",
+            {"id": "q4", "type": "text", "prompt": "If you could learn any skill in 3 months, what would it be?",
                 "placeholder": "Example: coding, baking, photography"},
-            {"id": "p1_q5", "type": "mcq", "prompt": "Pick the most accurate statement:", "options": [
+            {"id": "q5", "type": "mcq", "prompt": "Pick the most accurate statement:", "options": [
                 "I like clear structure", "I like flexibility", "I like creating things", "I like analysing patterns"]},
         ]
     return {"questions": qs}
@@ -40,7 +40,7 @@ def fallback_part2(education_status: str, part1_answers: list[Any]) -> dict[str,
                       "prompt": "After poly, what is your plan?", "options": ["Work", "Go to uni"]}
     qs = []
     for i in range(12):
-        qs.append({"id": f"p2_q{i+1}", "type": "mcq", "prompt": f"Which sounds more interesting right now? (Q{i+1})",
+        qs.append({"id": f"q{i+1}", "type": "mcq", "prompt": f"Which sounds more interesting right now? (Q{i+1})",
                   "options": [f"{fields[i % 3]} option A", f"{fields[i % 3]} option B", f"{fields[i % 3]} option C"]})
     return {"inferred_fields": fields, "questions": qs, "poly_extra_question": poly_extra}
 
