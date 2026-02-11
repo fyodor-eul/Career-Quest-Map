@@ -189,6 +189,67 @@ def _dist_rules(distribution: List[str], start: int = 1) -> List[str]:
     return rules
 
 
+def _convert_question_for_ui(q: Dict[str, Any]) -> Dict[str, Any]:
+    t = q.get("type")
+    prompt = q.get("prompt", "")
+    if t == "mcq":
+        opts = q.get("options", [])
+        if not isinstance(opts, list):
+            opts = []
+        return {
+            "type": "multiple_choice",
+            "select_count": len(opts),
+            "question": prompt,
+            "answers": opts,
+            "user_choice_index": 0,
+        }
+    if t == "slider":
+        scale = q.get("scale", {})
+        mx = 10
+        if isinstance(scale, dict) and isinstance(scale.get("max"), (int, float)):
+            mx = int(scale.get("max"))
+        return {
+            "type": "slider",
+            "select_count": mx,
+            "question": prompt,
+            "user_choice_index": 0,
+        }
+    if t == "rating":
+        return {
+            "type": "slider",
+            "select_count": 5,
+            "question": prompt,
+            "user_choice_index": 0,
+        }
+    # text or fallback
+    placeholder = q.get("placeholder", "")
+    if not isinstance(placeholder, str):
+        placeholder = ""
+    return {
+        "type": "textinput",
+        "question": prompt,
+        "placeholder": placeholder,
+        "user_input": "",
+    }
+
+
+def _print_questions(tag: str, payload: Dict[str, Any]) -> None:
+    qs = payload.get("questions") if isinstance(payload, dict) else None
+    if not isinstance(qs, list):
+        print(f"[{tag}] No questions to print.")
+        return
+    items: List[Dict[str, Any]] = []
+    for q in qs:
+        if isinstance(q, dict):
+            items.append(_convert_question_for_ui(q))
+    # Include poly extra question if present
+    peq = payload.get("poly_extra_question") if isinstance(payload, dict) else None
+    if isinstance(peq, dict):
+        items.append(_convert_question_for_ui(peq))
+    print(f"[{tag}] ui_questions = {json.dumps(items, ensure_ascii=False, indent=2)}")
+    return {json.dumps(items, ensure_ascii=False, indent=2)}
+
+
 # ------------------------------------------------------------
 # Content Engine
 # ------------------------------------------------------------
@@ -234,6 +295,7 @@ class ContentEngine:
 
         out = self.llm.invoke_json(SYSTEM_RULES, user_prompt)
         validate_part1(out)
+        p1_q = _print_questions("Part1", out)
         return out
 
     # ---------------- Part 2 ----------------
@@ -285,9 +347,12 @@ class ContentEngine:
         out = self.llm.invoke_json(SYSTEM_RULES, user_prompt)
         try:
             validate_part2(out, is_poly=is_poly)
+            fields = out.get("inferred_fields", [])
+            if isinstance(fields, list):
+                print(f"[Part2] inferred_fields: {fields}")
+            _print_questions("Part2", out)
             return out
         except Exception:
-            # Fallback to deterministic content if LLM output is malformed
             fallback = fallback_part2(education_status, part1_answers)
             validate_part2(fallback, is_poly=is_poly)
             return fallback
@@ -395,12 +460,16 @@ class ContentEngine:
             "dragon.resources must be a list of 3 to 6 general resources (free/commonly accessible).",
             "Do not assume paid-only services.",
             "Do not include precise statistics.",
+            "Micro quest: 1 week, 5-7 short sessions (<=60 min each) ending with a tangible output.",
+            "Mini project: 1 month with 3 phases (Plan, Build, Review) ending with a showable deliverable.",
+            "Mini project must use free tools and no expensive equipment.",
+            "Resources must include exactly 4 items: official docs/reference, beginner tutorial/course, example project/template, community/forum.",
         ]
         if work_path:
             hard_rules.extend([
                 "Include work_style_line (1 short line).",
                 "Include salary_outlook_line using safe ranges or qualitative phrasing for a poly fresh graduate.",
-                "Salary line must avoid exact single numbers; use ranges like 'around S$2.5k–S$3.2k' or qualitative phrasing.",
+                "Salary line must avoid exact single numbers; use ranges like 'around S$2.5k- S$3.2k' or qualitative phrasing.",
             ])
 
         user_prompt = _build_prompt(task, context_lines, _schema_gate(work_path), hard_rules)
