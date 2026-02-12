@@ -1,0 +1,358 @@
+[Part1] ui_questions = [
+  {
+    "type": "multiple_choice",
+    "select_count": 4,
+    "question": "Which IT area are you most curious about?",
+    "answers": [
+      "Software development",
+      "System administration",
+      "Cybersecurity",
+      "Data science"
+    ],
+    "user_choice_index": 0
+  },
+  {
+    "type": "multiple_choice",
+    "select_count": 4,
+    "question": "Which part of your IT course is most challenging?",
+    "answers": [
+      "Programming concepts",
+      "Projects/assignments",
+      "Math/logic",
+      "Exam prep"
+    ],
+    "user_choice_index": 0
+  },
+  {
+    "type": "slider",
+    "select_count": 10,
+    "question": "On a scale of 0-10, how difficult is balancing coursework with personal study?",   
+    "user_choice_index": 0
+  },
+  {
+    "type": "slider",
+    "select_count": 5,
+    "question": "How motivated are you to continue IT studies this semester?",
+    "user_choice_index": 0
+  },
+  {
+    "type": "textinput",
+    "question": "What learning style or method helps you learn best?",
+    "placeholder": "e.g., hands-on projects, visual notes",
+    "user_input": ""
+  }
+]
+Part 1 UI questions:
+[
+  {
+    "type": "multiple_choice",
+    "select_count": 4,
+    "question": "Which IT area are you most curious about?",
+    "answers": [
+      "Software development",
+      "System administration",
+      "Cybersecurity",
+      "Data science"
+    ],
+    "user_choice_index": 0
+  },
+  {
+    "type": "multiple_choice",
+    "select_count": 4,
+    "question": "Which part of your IT course is most challenging?",
+    "answers": [
+      "Programming concepts",
+      "Projects/assignments",
+      "Math/logic",
+      "Exam prep"
+    ],
+    "user_choice_index": 0
+  },
+  {
+    "type": "slider",
+    "select_count": 10,
+    "question": "On a scale of 0-10, how difficult is balancing coursework with personal study?",   
+    "user_choice_index": 0
+  },
+  {
+    "type": "slider",
+    "select_count": 5,
+    "question": "How motivated are you to continue IT studies this semester?",
+    "user_choice_index": 0
+  },
+  {
+    "type": "textinput",
+    "question": "What learning style or method helps you learn best?",
+    "placeholder": "e.g., hands-on projects, visual notes",
+    "user_input": ""
+  }
+]
+[Part2] inferred_fields: ['Software', 'Programming', 'Networks']
+[Part2] ui_questions = [
+  {
+    "type": "multiple_choice",
+    "select_count": 4,
+    "question": "Which field interests you most?",
+    "answers": [
+      "Software",
+      "Programming",
+      "Networks",
+      "Other"
+    ],
+    "user_choice_index": 0
+  },
+  {
+    "type": "multiple_choice",
+    "select_count": 4,
+    "question": "Which activity would you enjoy most in your work?",
+    "answers": [
+      "Build apps",
+      "Code logic",
+      "Configure networks",
+      "Study concepts"
+    ],
+    "user_choice_index": 0
+  },
+  {
+    "type": "multiple_choice",
+    "select_count": 4,
+    "question": "Which environment suits you best?",
+    "answers": [
+      "Team project",
+      "Independent work",
+      "Client work",
+      "Research"
+    ],
+    "user_choice_index": 0
+  },
+  {
+    "type": "multiple_choice",
+    "select_count": 4,
+    "question": "Which outcome excites you most?",
+    "answers": [
+      "Useful software",
+      "Solving problems",
+      "Secure networks",
+      "Learning concepts"
+    ],
+    "user_choice_index": 0
+  },
+  {
+    "type": "slider",
+    "select_count": 10,
+    "question": "Rate your hands-on coding interest",
+    "user_choice_index": 0
+  },
+  {
+    "type": "slider",
+    "select_count": 10,
+    "question": "Rate your comfort with networks and infrastructure",
+    "user_choice_index": 0
+  },
+  {
+    "type": "slider",
+    "select_count": 10,
+    "question": "Rate your interest in theory and systems design",
+    "user_choice_index": 0
+  },
+  {
+    "type": "slider",
+    "select_count": 5,
+    "question": "How appealing is Software to you?",
+    "user_choice_index": 0
+  },
+  {
+    "type": "slider",
+    "select_count": 5,
+    "question": "How appealing is Programming to you?",
+    "user_choice_index": 0
+  },
+  {
+    "type": "slider",
+    "select_count": 5,
+    "question": "How appealing is Networks to you?",
+    "user_choice_index": 0
+  },
+  {
+    "type": "textinput",
+    "question": "Describe a day you enjoy",
+    "placeholder": "e.g., code, test, design",
+    "user_input": ""
+  },
+  {
+    "type": "textinput",
+    "question": "What project would you love to start",
+    "placeholder": "e.g., mini app",
+    "user_input": ""
+  },
+  {
+    "type": "multiple_choice",
+    "select_count": 2,
+    "question": "How would you pursue your IT interests while Poly?",
+    "answers": [
+      "Work",
+      "Go to uni"
+    ],
+    "user_choice_index": 0
+  }
+]
+
+Part 2 UI questions:
+[
+  {
+    "type": "multiple_choice",
+    "select_count": 4,
+    "question": "Which field interests you most?",
+    "answers": [
+      "Software",
+      "Programming",
+      "Networks",
+      "Other"
+    ],
+    "user_choice_index": 0
+  },
+  {
+    "type": "multiple_choice",
+    "select_count": 4,
+    "question": "Which activity would you enjoy most in your work?",
+    "answers": [
+      "Build apps",
+      "Code logic",
+      "Configure networks",
+      "Study concepts"
+    ],
+    "user_choice_index": 0
+  },
+  {
+    "type": "multiple_choice",
+    "select_count": 4,
+    "question": "Which environment suits you best?",
+    "answers": [
+      "Team project",
+      "Independent work",
+      "Client work",
+      "Research"
+    ],
+    "user_choice_index": 0
+  },
+  {
+    "type": "multiple_choice",
+    "select_count": 4,
+    "question": "Which outcome excites you most?",
+    "answers": [
+      "Useful software",
+      "Solving problems",
+      "Secure networks",
+      "Learning concepts"
+    ],
+    "user_choice_index": 0
+  },
+  {
+    "type": "slider",
+    "select_count": 10,
+    "question": "Rate your hands-on coding interest",
+    "user_choice_index": 0
+  },
+  {
+    "type": "slider",
+    "select_count": 10,
+    "question": "Rate your comfort with networks and infrastructure",
+    "user_choice_index": 0
+  },
+  {
+    "type": "slider",
+    "select_count": 10,
+    "question": "Rate your interest in theory and systems design",
+    "user_choice_index": 0
+  },
+  {
+    "type": "slider",
+    "select_count": 5,
+    "question": "How appealing is Software to you?",
+    "user_choice_index": 0
+  },
+  {
+    "type": "slider",
+    "select_count": 5,
+    "question": "How appealing is Programming to you?",
+    "user_choice_index": 0
+  },
+  {
+    "type": "slider",
+    "select_count": 5,
+    "question": "How appealing is Networks to you?",
+    "user_choice_index": 0
+  },
+  {
+    "type": "textinput",
+    "question": "Describe a day you enjoy",
+    "placeholder": "e.g., code, test, design",
+    "user_input": ""
+  },
+  {
+    "type": "textinput",
+    "question": "What project would you love to start",
+    "placeholder": "e.g., mini app",
+    "user_input": ""
+  },
+  {
+    "type": "multiple_choice",
+    "select_count": 2,
+    "question": "How would you pursue your IT interests while Poly?",
+    "answers": [
+      "Work",
+      "Go to uni"
+    ],
+    "user_choice_index": 0
+  }
+]
+
+Analysis output:
+{
+  "strength_tags": [
+    "Hands-on",
+    "Analytical",
+    "Team-oriented",
+    "Systems-thinking",
+    "Curious"
+  ],
+  "work_style_tags": [
+    "Collaborative",
+    "Structured",
+    "Problem-solving",
+    "Adaptive"
+  ],
+  "feedback_lines": [
+    "You lean toward software craft and teamwork.",
+    "Your comfort with networks and design hints at broad roles.",
+    "Try hands-on, project-based paths to keep curiosity alive."
+  ],
+  "suggested_options": [
+    "Junior Software Developer",
+    "Mobile App Developer",
+    "Network Automation Engineer"
+  ]
+}
+
+Gate scene output:
+{
+  "info_dialog_lines": [
+    "Wise man: Subjects to study include programming fundamentals, data structures, algorithms, databases, and version control.",
+    "Wise man: Learn web basics, debugging, testing, and collaborative tools.",
+    "Wise man: Employment outlook is steady for poly grads who build real skills and portfolios.",  
+    "Wise man: Impact on people comes from tools that save time, reduce errors, and help users in daily tasks.",
+    "Wise man: With practice, you can grow into roles that support many users across domains."      
+  ],
+  "work_style_line": "Collaborative, iterative, and problem-focused work style common in software teams.",
+  "salary_outlook_line": "Salary outlook for a poly fresh graduate: around S$2.5k–S$3.5k per month, depending on company and location.",
+  "dragon": {
+    "micro_quest_1_week": "Complete 5-7 short sessions (each up to 60 minutes) in one week to build a small tool (e.g., to-do list or calculator) and deliver runnable output with a README.",
+    "mini_project_1_month": "1-month mini project with three phases: Plan, Build, Review; deliver a showable app or tool using free tools and open-source libraries; include documentation.",
+    "resources": [
+      "Official docs/reference for popular languages and tools (free access)",
+      "Beginner tutorial/course accessible online (free platforms)",
+      "Example project/template to study and adapt (free to use)",
+      "Community forum or Q&A site for guidance and tips (free to join)"
+    ]
+  }
+}
