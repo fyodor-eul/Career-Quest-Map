@@ -65,6 +65,53 @@ def _convert_payload_for_ui(payload: Dict[str, Any]) -> List[Dict[str, Any]]:
     return items
 
 
+def _mock_answer_for_question(q: Dict[str, Any]) -> Any:
+    qtype = q.get("type")
+    if qtype == "mcq":
+        opts = q.get("options", [])
+        if isinstance(opts, list) and opts:
+            return opts[0]
+        return ""
+    if qtype == "slider":
+        scale = q.get("scale", {})
+        mn, mx = 0, 10
+        if isinstance(scale, dict):
+            if isinstance(scale.get("min"), (int, float)):
+                mn = int(scale.get("min"))
+            if isinstance(scale.get("max"), (int, float)):
+                mx = int(scale.get("max"))
+        return (mn + mx) // 2
+    if qtype == "rating":
+        return 3
+    if qtype == "text":
+        return "Sample answer"
+    return ""
+
+
+def _mock_answers_from_payload(payload: Dict[str, Any]) -> List[Dict[str, Any]]:
+    answers: List[Dict[str, Any]] = []
+    qs = payload.get("questions", [])
+    if isinstance(qs, list):
+        for q in qs:
+            if not isinstance(q, dict):
+                continue
+            answers.append({
+                "id": q.get("id"),
+                "type": q.get("type"),
+                "prompt": q.get("prompt"),
+                "answer": _mock_answer_for_question(q),
+            })
+    peq = payload.get("poly_extra_question")
+    if isinstance(peq, dict):
+        answers.append({
+            "id": peq.get("id"),
+            "type": peq.get("type"),
+            "prompt": peq.get("prompt"),
+            "answer": _mock_answer_for_question(peq),
+        })
+    return answers
+
+
 def main() -> None:
     cfg = AppConfig()
     llm = LLMClient(
@@ -84,12 +131,38 @@ def main() -> None:
     print(json.dumps(part1_ui, ensure_ascii=False, indent=2))
 
     # Mock answers for part 1 to drive part 2
-    part1_answers = [{"id": q.get("id"), "answer": ""} for q in part1_payload.get("questions", [])]
-
+    part1_answers = _mock_answers_from_payload(part1_payload)
     part2_payload = engine.gen_part2(education_status, part1_answers)
     part2_ui = _convert_payload_for_ui(part2_payload)
     print("\nPart 2 UI questions:")
     print(json.dumps(part2_ui, ensure_ascii=False, indent=2))
+
+    # Mock answers for part 2 to drive analysis
+    part2_answers = _mock_answers_from_payload(part2_payload)
+    inferred_fields = part2_payload.get("inferred_fields", [])
+    poly_path_choice = "Work" if education_status == "Poly" else None
+
+    analysis = engine.gen_analysis(
+        education_status=education_status,
+        poly_path_choice=poly_path_choice,
+        inferred_fields=inferred_fields if isinstance(inferred_fields, list) else [],
+        part2_answers=part2_answers,
+    )
+    print("\nAnalysis output:")
+    print(json.dumps(analysis, ensure_ascii=False, indent=2))
+
+    suggested = analysis.get("suggested_options", [])
+    if isinstance(suggested, list) and suggested:
+        option_name = str(suggested[2])
+        work_path = bool(education_status == "Poly" and poly_path_choice == "Work")
+        gate = engine.gen_gate_scene(
+            option_name=option_name,
+            work_path=work_path,
+            education_status=education_status,
+            poly_path_choice=poly_path_choice,
+        )
+        print("\nGate scene output:")
+        print(json.dumps(gate, ensure_ascii=False, indent=2))
 
 
 if __name__ == "__main__":
